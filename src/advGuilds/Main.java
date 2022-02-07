@@ -34,7 +34,7 @@ public class Main {
 		
 		player1.moveFromHandToMat(player1.getHand().topCard());
 		player1.moveFromHandToMat(player1.getHand().topCard());
-		// tak co, git?
+		// tak co, git?123
 		for(Card c: player1.getHand().getDeck()) {
 			System.out.println(c.getCardString());
 		}
