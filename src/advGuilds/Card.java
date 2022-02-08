@@ -4,6 +4,7 @@
 package advGuilds;
 
 /**
+ * Card - generic card used in game. Should not be user. Use instead one of child classes.
  * @author Cergy
  *
  */

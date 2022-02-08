@@ -6,6 +6,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
+/**
+ * Class for reading Card files and initializing all Cards.
+ * @author CergyTP
+ *
+ */
 public class CardInitializer {
 	
 	
@@ -25,6 +30,10 @@ public class CardInitializer {
 	String adventurerFileName = "adventurerCardsData";
 	String path = new String("src/advGuilds/cardsData/");
 	
+	
+	/**
+	 * Constructor, calls loadCards method.
+	 */
 	public CardInitializer() {
 
 		itemDeck = new Deck();
@@ -36,7 +45,10 @@ public class CardInitializer {
 		loadCards();
 		
 	}
-		
+	
+	/**
+	 * reads all cards file and loads cards into decks. Decks are then shuffled.
+	 */
 	private void loadCards(){
 		
 		readCardsFile(itemFileName);
@@ -67,11 +79,20 @@ public class CardInitializer {
 		return this.itemDeck;
 	}
 	
+	
+	/**
+	 * Shuffles deck of cards
+	 * @param deck Deck to be shuffled
+	 */
 	public void shuffleDeck(ArrayList<Card> deck) {
 		Collections.shuffle(deck);
 	}
 	
 	
+	/**
+	 * Reads Files for cards.
+	 * @param fileName name of the card file.
+	 */
 	private void readCardsFile(String fileName) {
 
 		File cardFile = new File(path + fileName);
@@ -99,6 +120,10 @@ public class CardInitializer {
 		}
 	}
 	
+	/**
+	 * reads Item Card File's line and creates Card (or multiple cards of one type) from it
+	 * @param line line from file with all needed parameters.
+	 */
 	private void readItemLine(String line) {
 		String[] tmp = line.split(";");
 		
@@ -111,6 +136,10 @@ public class CardInitializer {
 	    for(int i = 0; i < repeat; i++) { itemDeck.addCard(new ItemCard(getNewId(), price, name, desc, iType));}
 		}
 	
+	/**
+	 * reads Quest Card File's line and creates Card (or multiple cards of one type) from it
+	 * @param line line from file with all needed parameters.
+	 */
 	private void readQuestLine(String line) {
 		String[] tmp = line.split(";");
 		int rewardGold = Integer.parseInt(tmp[0]);
@@ -123,6 +152,10 @@ public class CardInitializer {
 		for(int i = 0; i < repeat; i++) { questDeck.addCard(new QuestCard(getNewId(), 0, name, desc, prereq, reward, rewardGold));}
 	}
 	
+	/**
+	 * reads Adventurer Card File's line and creates Card (or multiple cards of one type) from it
+	 * @param line line from file with all needed parameters.
+	 */
 	private void readAdventurerLine(String line) {
 		String[] tmp = line.split(";");
 		
@@ -139,6 +172,10 @@ public class CardInitializer {
 		}
 	}
 	
+	/**
+	 * reads Action Card File's line and creates Card (or multiple cards of one type) from it
+	 * @param line line from file with all needed parameters.
+	 */
 	private void readActionLine(String line) {
 		String[] tmp = line.split(";");
 		
@@ -153,7 +190,10 @@ public class CardInitializer {
 	}
 	
 	
-	
+	/**
+	 * Handles ID generation
+	 * @return new ID number upon every call of method.
+	 */
 	private int getNewId() {
 		return ++id;
 	}

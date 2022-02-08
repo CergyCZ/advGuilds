@@ -3,7 +3,12 @@ package advGuilds;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-
+/**
+ * Class for reading datafiles for cards to initialize them.
+ * !Not used! CardInitializer handles all.
+ * @author CergyTP
+ *
+ */
 public class CardFileReader {
 	
 	Scanner lineScanner;
@@ -11,14 +16,21 @@ public class CardFileReader {
 	String itemFileName = "itemCardsData";
 	String path = new String("src/advGuilds/cardsData/");
 	
-	
+	/**
+	 * Constructor. Sets ID min value and calls methods to read files
+	 */
 	public CardFileReader() { //nedelat v konstruktoru, ale samostatnou metodou. Aby se dal menit soubor za behu.
 		id = 1000;
 			
 		readItemFile();
+		
+		//TODO: readActionFile, readQuestFile, readAdventurerFile
 	}
 	
 	
+	/**
+	 * reads Item File
+	 */
 	public void readItemFile() {
 		int id, price;
 		String name, desc;
